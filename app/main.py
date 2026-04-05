@@ -1,5 +1,5 @@
 from Quiz import Quiz
-from play import play, add_quiz, print_quiz_list
+from play import play, add_quiz, print_quiz_list, print_top_score
 from utils import get_valid_input, print_double_line, print_line
 
 def main():
@@ -35,16 +35,17 @@ def _default_quizzes():
             1,
         ),
         Quiz(
-            "이종석의 취미는",
+            "이종석의 취미는?",
             ["음악 감상", "게임", "운동", "독서"],
             4,
         ),
         Quiz(
-            "이종석의 키는",
+            "이종석의 키는?",
             ["175cm", "180cm", "185cm", "190cm"],
             3,
         ),
     ]
+
 
 def load_quizzes():
     quizzes = _default_quizzes()
@@ -74,7 +75,7 @@ def handle_option(quizzes, option):
     elif(option == 3):
         print_quiz_list(quizzes)
     elif(option == 4):
-        print("점수 확인")
+        print_top_score(len(quizzes))
     elif(option == 5):
         print("종료")
     return True
