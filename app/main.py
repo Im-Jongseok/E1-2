@@ -1,5 +1,7 @@
+from Quiz import Quiz
 
 def main():
+    quizzes = load_quizzes()
     print_menu()
     while True:
         option = choose_option()
@@ -12,6 +14,39 @@ def main():
         handle_option(option)
 
     return 0
+
+def _default_quizzes():
+    return [
+        Quiz(
+            "피평가자의 이름은?",
+            ["이종석", "김현석", "김태환", "이태민"],
+            1,
+        ),
+        Quiz(
+            "이종석의 출생 연도는?",
+            ["1998년", "2000년", "2002년", "2004년"],
+            3,
+        ),
+        Quiz(
+            "이종석의 mdti는?",
+            ["INTJ", "INTP", "ESTP", "ISFP"],
+            1,
+        ),
+        Quiz(
+            "이종석의 취미는",
+            ["음악 감상", "게임", "운동", "독서"],
+            4,
+        ),
+        Quiz(
+            "이종석의 키는",
+            ["175cm", "180cm", "185cm", "190cm"],
+            3,
+        ),
+    ]
+
+def load_quizzes():
+    quizzes = _default_quizzes()
+    return quizzes
 
 def print_menu():
     print("==============================\n")
@@ -55,11 +90,13 @@ def get_valid_input(min_val, max_val, prompt):
             print("\n EOF ERROR: 프로그램을 안전하게 종료합니다.")
             return EOFError
     
-def handle_option(option):
+def handle_option(quizzes, option):
     if(option == 1) :
         print("퀴즈 풀기")
+        # play_quiz(quizzes)
     elif(option == 2):
         print("퀴즈 추가")
+        # add_quiz(quizzes)
     elif(option == 3):
         print("퀴즈 목록")
     elif(option == 4):
