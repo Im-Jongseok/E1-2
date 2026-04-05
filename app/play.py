@@ -37,6 +37,19 @@ def player_score(quiz, score):
 
 def print_score(quiz_len, score):
     print_double_line()
-    point = (score / quiz_len * 100)
+    point = int(score / quiz_len * 100)
     print(f"결과: {quiz_len}문제 중 {score}문제 정답! ({point}점)\n")
     print_double_line()
+
+def add_quiz(quizzes):
+    print("\n새로운 퀴즈를 추가합니다.\n")
+    question = input("문제를 입력하세요: ")         # question 
+    choices = []                                # choices
+    for i in range(4):                          
+        choice = input(f"선택지 {i+1}: ")
+        choices.append(choice)
+    answer = get_valid_input(1, 4, "정답 번호 (1-4): ")    # answer
+
+    new_quiz = Quiz(question, choices, answer) # Quiz 클래스의 인스턴스로 퀴즈 생성
+    quizzes.append(new_quiz)
+    print("퀴즈가 추가되었습니다!\n")
