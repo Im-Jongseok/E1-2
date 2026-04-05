@@ -1,5 +1,5 @@
 from Quiz import Quiz
-from play import play, add_quiz
+from play import play, add_quiz, print_quiz_list
 from utils import get_valid_input, print_double_line, print_line
 
 def main():
@@ -68,13 +68,11 @@ def choose_option():
 
 def handle_option(quizzes, option):
     if(option == 1) :
-        print("퀴즈 풀기")
         play(quizzes)
     elif(option == 2):
-        print("퀴즈 추가")
         add_quiz(quizzes)
     elif(option == 3):
-        print("퀴즈 목록")
+        print_quiz_list(quizzes)
     elif(option == 4):
         print("점수 확인")
     elif(option == 5):

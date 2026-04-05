@@ -53,3 +53,12 @@ def add_quiz(quizzes):
     new_quiz = Quiz(question, choices, answer) # Quiz 클래스의 인스턴스로 퀴즈 생성
     quizzes.append(new_quiz)
     print("퀴즈가 추가되었습니다!\n")
+
+def print_quiz_list(quizzes):
+    print_line()
+    print(f"등록된 퀴즈 목록 (총 {len(quizzes)}문제):\n")
+    print_line()
+
+    for i, quiz in enumerate(quizzes):
+        print(f"[{i+1}] {quiz.question}")
+    print_line()
