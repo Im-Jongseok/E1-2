@@ -1,4 +1,6 @@
 from Quiz import Quiz
+from play import play
+from utils import get_valid_input, print_double_line, print_line
 
 def main():
     quizzes = load_quizzes()
@@ -11,7 +13,7 @@ def main():
         elif option == EOFError:
             break
 
-        handle_option(option)
+        handle_option(quizzes,option)
 
     return 0
 
@@ -49,51 +51,25 @@ def load_quizzes():
     return quizzes
 
 def print_menu():
-    print("==============================\n")
+    print_double_line()
     print("   퀴즈 게임\n")
-    print("==============================")
+    print_double_line()
     print("1. 퀴즈 풀기\n")
     print("2. 퀴즈 추가\n")
     print("3. 퀴즈 목록\n")
     print("4. 점수 확인\n")
     print("5. 종료\n")
-    print("==============================\n")
+    print_double_line()
 
 def choose_option():
     option = get_valid_input(1, 5, "옵션 선택: ")
     return option
 
-def get_valid_input(min_val, max_val, prompt):
-     while True:
-        try:
-            raw = input(prompt)
 
-            # 빈 입력 처리
-            if raw.strip() == "":
-                print("EMPTY INPUT ERROR: 값을 입력해주세요.")
-                continue
-
-            # 앞뒤 공백 제거 후 숫자 변환
-            value = int(raw.strip())
-
-            # 허용 범위 검사
-            if not (min_val <= value <= max_val):
-                print(f"RANGE ERROR: {min_val}~{max_val} 사이의 숫자를 입력해주세요.")
-                continue
-
-            return value
-
-        except ValueError:
-            print("TYPE ERROR: 숫자만 입력해주세요.")
-
-        except (KeyboardInterrupt, EOFError):
-            print("\n EOF ERROR: 프로그램을 안전하게 종료합니다.")
-            return EOFError
-    
 def handle_option(quizzes, option):
     if(option == 1) :
         print("퀴즈 풀기")
-        # play_quiz(quizzes)
+        play(quizzes)
     elif(option == 2):
         print("퀴즈 추가")
         # add_quiz(quizzes)
