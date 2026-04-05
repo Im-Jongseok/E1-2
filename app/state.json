@@ -1,0 +1,55 @@
+{
+    "quizzes": [
+        {
+            "question": "피평가자의 이름은?",
+            "choices": [
+                "이종석",
+                "김현석",
+                "김태환",
+                "이태민"
+            ],
+            "answer": 1
+        },
+        {
+            "question": "이종석의 출생 연도는?",
+            "choices": [
+                "1998년",
+                "2000년",
+                "2002년",
+                "2004년"
+            ],
+            "answer": 3
+        },
+        {
+            "question": "이종석의 mdti는?",
+            "choices": [
+                "INTJ",
+                "INTP",
+                "ESTP",
+                "ISFP"
+            ],
+            "answer": 1
+        },
+        {
+            "question": "이종석의 취미는?",
+            "choices": [
+                "음악 감상",
+                "게임",
+                "운동",
+                "독서"
+            ],
+            "answer": 4
+        },
+        {
+            "question": "이종석의 키는?",
+            "choices": [
+                "175cm",
+                "180cm",
+                "185cm",
+                "190cm"
+            ],
+            "answer": 3
+        }
+    ],
+    "top_score": 40
+}

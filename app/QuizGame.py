@@ -1,10 +1,14 @@
 from Quiz import Quiz
+import json
+import os
 
 # QuizGame 클래스
 class QuizGame:
     def __init__(self):
-        self._quizzes = self._default_quizzes()
         self._top_score = -1
+        self._file_path = "./state.json"    # JSON 파일 경로
+        self._quizzes = self.load_json()    # JSON 파일에서 퀴즈 데이터 로드
+        self.save_json()                    # JSON 파일에 퀴즈 데이터 저장 (최초 실행 시 기본 퀴즈로 초기화)
 
     # ------------ utils ------------ 
     # 구분선 출력
@@ -42,6 +46,54 @@ class QuizGame:
                 print("\n EOF ERROR: 프로그램을 안전하게 종료합니다.")
                 return EOFError
 
+    # ------------ JSON ------------
+    # read JSON 
+    def load_json(self):
+        if not os.path.exists(self._file_path):
+            print(f"FILE NOT FOUND ERROR: '{self._file_path}' 파일이 존재하지 않아 읽을 수 없습니다. 기본 퀴즈로 복구합니다.")
+            return self._default_quizzes()
+        try:
+            with open(self._file_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                self._top_score = data.get("top_score", -1)  # 최고 점수 로드
+                quizzes = data.get("quizzes", [])
+
+            # quizzes가 비어있으면 기본 퀴즈 반환
+            if not quizzes:
+                return self._default_quizzes()
+
+            return [Quiz(**quiz) for quiz in quizzes]  # JSON에서 Quiz 객체로 변환
+    
+        except json.JSONDecodeError:
+            print(f"JSON DECODE ERROR: '{self._file_path}' 파일이 손상되어 읽을 수 없습니다. 기본 퀴즈로 복구합니다.")
+            return self._default_quizzes()
+        except PermissionError:
+            print(f"PERMISSION ERROR: '{self._file_path}' 파일에 접근 권한이 없어 읽을 수 없습니다. 기본 퀴즈로 복구합니다.")
+            return self._default_quizzes()  
+        except IsADirectoryError:
+            print(f"IS A DIRECTORY ERROR: '{self._file_path}' 경로가 디렉토리임으로 읽을 수 없습니다. 기본 퀴즈로 복구합니다.")
+            return self._default_quizzes()
+
+    # write JSON
+    def save_json(self):
+        try:
+            with open(self._file_path, 'w', encoding='utf-8') as f:
+                data = {
+                    "quizzes": [quiz.__dict__ for quiz in self._quizzes],  # Quiz 객체를 딕셔너리로 변환
+                    "top_score": self._top_score  # 최고 점수 저장
+                }
+                json.dump(data, f, ensure_ascii=False, indent=4) # JSON 파일로 저장
+
+        except json.JSONDecodeError:
+            print(f"JSON DECODE ERROR: '{self._file_path}' 파일이 손상되어 저장할 수 없습니다.")
+            return self._default_quizzes()
+        except PermissionError:
+            print(f"PERMISSION ERROR: '{self._file_path}' 파일에 접근 권한이 없어 저장할 수 없습니다.")
+            return self._default_quizzes()  
+        except IsADirectoryError:
+            print(f"IS A DIRECTORY ERROR: '{self._file_path}' 경로가 디렉토리임으로 저장할 수 없습니다.")
+            return self._default_quizzes()
+        
     # ------------ value 관련 메서드 ------------
     # 퀴즈 기본 데이터
     def _default_quizzes(self):
@@ -169,6 +221,7 @@ class QuizGame:
 
         new_quiz = Quiz(question, choices, answer) # Quiz 클래스의 인스턴스로 퀴즈 생성
         self._quizzes.append(new_quiz)
+        self.save_json()                           # JSON 파일에 퀴즈 저장
         print("퀴즈가 추가되었습니다!\n")
 
     #  3. 퀴즈 목록 
@@ -211,6 +264,7 @@ class QuizGame:
     def is_top_score(self, score):
         if self._top_score < score:
             self._top_score = score
+            self.save_json()            # JSON 파일에 최고 점수 저장
             return 1
         return 0
 
