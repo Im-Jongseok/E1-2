@@ -128,12 +128,12 @@ E1-2/
 
 ### 프로그램 실행 결과 스크린샷
 
-<img src="img/menu.png" alt="퀴즈 게임 실행">
-<img src="img/1.png"  alt="퀴즈 게임 실행">
-<img src="img/1-2.png" alt="퀴즈 게임 실행">
-<img src="img/2.png"  alt="퀴즈 게임 실행">
-<img src="img/3-5.png"  alt="퀴즈 게임 실행">
-<img src="img/4.png"  alt="퀴즈 게임 실행">
+<img src="img/menu.png" width="300" height="500" alt="퀴즈 게임 실행">
+<img src="img/1.png" width="300" height="500" alt="퀴즈 게임 실행">
+<img src="img/1-2.png" width="300" height="500" alt="퀴즈 게임 실행">
+<img src="img/2.png" width="300" height="500" alt="퀴즈 게임 실행">
+<img src="img/3-5.png" width="300" height="500" alt="퀴즈 게임 실행">
+<img src="img/4.png" width="300" height="500" alt="퀴즈 게임 실행">
 
 ### git log --oneline --graph  결과
 
