@@ -141,7 +141,7 @@ class QuizGame:
 
     # 퀴즈 길이
     def get_quiz_len(self):
-        return len(self._quizzes)
+        return int(len(self._quizzes))
 
 
     # ------------ 게임 실행 ------------
@@ -150,7 +150,7 @@ class QuizGame:
         self.print_menu()
         while True:
             option = self.choose_option()
-            if option == 5 :
+            if option == 6 :
                 print("게임을 종료합니다.")
                 break
             elif option == EOFError:
@@ -187,13 +187,14 @@ class QuizGame:
         print("1. 퀴즈 풀기\n")
         print("2. 퀴즈 추가\n")
         print("3. 퀴즈 목록\n")
-        print("4. 점수 확인\n")
-        print("5. 종료\n")
+        print("4. 퀴즈 삭제\n")
+        print("5. 점수 확인\n")
+        print("6. 종료\n")
         self.print_double_line()
 
     # 메뉴 선택
     def choose_option(self):
-        option = self.get_valid_input(1, 5, "옵션 선택: ")
+        option = self.get_valid_input(1, 6, "옵션 선택: ")
         return option
 
     # 메뉴 옵션 처리
@@ -205,8 +206,10 @@ class QuizGame:
         elif(option == 3):
             self.print_quiz_list()
         elif(option == 4):
-            self.print_top_score()
+            self.remove_quiz()
         elif(option == 5):
+            self.print_top_score()
+        elif(option == 6):
             print("종료")
         return True     
 
@@ -255,6 +258,26 @@ class QuizGame:
         for i, quiz in enumerate(self._quizzes):
             print(f"[{i+1}] {quiz.question}")
         print()
+
+    # 퀴즈 삭제
+    def remove_quiz(self):
+        # 퀴즈가 없으면 종료
+        if not self._quizzes:
+            print("EMPTY ERROR: 삭제할 퀴즈가 없습니다.\n")
+            return
+
+        # 퀴즈 목록 출력
+        self.print_quiz_list()
+        print(f"[{self.get_quiz_len() + 1}] 삭제 취소\n")
+
+        # 삭제할 퀴즈 선택
+        index = self.get_valid_input(1, self.get_quiz_len() + 1, "삭제할 퀴즈 번호: ")
+
+        if index == (self.get_quiz_len() + 1):        # 삭제 취소
+            return
+        deleted = self._quizzes.pop(index - 1)    # 리스트에서 삭제
+        self.save_json()                          # JSON 파일에 저장
+        print(f"[ {deleted.question} ] 퀴즈가 삭제되었습니다.\n")
 
     # 퀴즈 개수 선택
     def choose_quiz_cnt(self):
@@ -309,5 +332,5 @@ class QuizGame:
             print("EMPTY SCORE ERROR: 점수가 없습니다.\n")
             return
         score = math.ceil((self._top_score / 100) * self.get_quiz_len())  # 점수 환산
-        print(f"최고 점수: {self._top_score} 점 총 ({self.get_quiz_len()} 문제 중 {score} 문제 정답)\n")
+        print(f"최고 점수: {self._top_score} 점\n")
 
