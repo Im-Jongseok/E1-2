@@ -1,26 +1,27 @@
 {
+    "player_cnt": 1,
     "quizzes": [
         {
-            "question": "이종석의 키는?",
+            "question": "이종석의 mdti는?",
             "choices": [
-                "175cm",
-                "180cm",
-                "185cm",
-                "190cm"
+                "INTJ",
+                "INTP",
+                "ESTP",
+                "ISFP"
             ],
-            "answer": 3,
-            "hint": "180cm up"
+            "answer": 1,
+            "hint": "집순이 + 컴공"
         },
         {
-            "question": "이종석의 취미는?",
+            "question": "이종석의 출생 연도는?",
             "choices": [
-                "음악 감상",
-                "게임",
-                "운동",
-                "독서"
+                "1998년",
+                "2000년",
+                "2002년",
+                "2004년"
             ],
-            "answer": 4,
-            "hint": "누워서 하는 활동"
+            "answer": 3,
+            "hint": "대~한민국! 짝짝짝! 짝짝!"
         },
         {
             "question": "피평가자의 이름은?",
@@ -31,30 +32,33 @@
                 "이태민"
             ],
             "answer": 1,
-            "hint": "이름은 이 O O"
+            "hint": "이 O O"
         },
         {
-            "question": "이종석의 mdti는?",
+            "question": "이종석의 취미는?",
             "choices": [
-                "INTJ",
-                "INTP",
-                "ESTP",
-                "ISFP"
+                "음악 감상",
+                "게임",
+                "운동",
+                "독서"
             ],
-            "answer": 1,
-            "hint": "집순이 + 컴퓨터공학과"
+            "answer": 4,
+            "hint": "누워서 하는거"
         },
         {
-            "question": "이종석의 출생연도는?",
+            "question": "이종석의 키는?",
             "choices": [
-                "1998",
-                "2000",
-                "2002",
-                "2004"
+                "175cm",
+                "180cm",
+                "185cm",
+                "190cm"
             ],
             "answer": 3,
-            "hint": "~한민국! 짝짝짝! 짝짝!"
+            "hint": "180cm UP"
         }
     ],
-    "top_score": 78
+    "top_point": 35,
+    "history": [
+
+    ]
 }
