@@ -1,8 +1,9 @@
 class Quiz:
-    def __init__(self, question, choices, answer):  # 퀴즈 클래스 초기화
+    def __init__(self, question, choices, answer, hint):  # 퀴즈 클래스 초기화
         self.question = question    # 퀴즈 질문
         self.choices = choices      # 리스트 선택지 ["선택지1", "선택지2", "선택지3", "선택지4"]
         self.answer = answer        # 퀴즈 정답
+        self.hint = hint            # 퀴즈 힌트
 
     def __str__(self):  # 퀴즈 객체를 문자열로 표현하는 메소드
         choices_str = "\n".join(
