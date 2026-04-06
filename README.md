@@ -58,7 +58,7 @@ E1-2/
 │  ├─ Quiz.py       # Quiz 클래스
 │  └─ QuizGame.py   # QuizGame 클래스
 ├─ data/
-│  └─ state.json    # 저장된 퀴즈 + 최고 점수
+│  └─ state.json    # 저장된 퀴즈 + 최고 점수 + 기록
 ├─ docker-compose.yml 
 ├─ .gitignore 
 └─ README.md
@@ -85,6 +85,7 @@ E1-2/
 
 ```json
 {
+  "player_cnt": 0
   "quizzes": [
     {
       "question": "예제 질문",
@@ -92,30 +93,39 @@ E1-2/
       "answer": 1
     }
   ],
-  "best_score": 0
+  "top_point": 0,
+  "history" : [
+    {
+        "player": "플레이어 네임",
+        "logs": [
+
+        ]
+    }
+  ]
 }
 ```
 
 경로: E1-2/app/state.json
 
 - `quizzes`: quiz 리스트 (문제, 선택지 4개, 정답 1~4)
-- `best_score`: 이전 최고 점수
+- `top_point`: 이전 최고 점수
+- `history`: 게임 기록
 
 
 
 ### 프로그램 실행 결과 스크린샷
 
-<img src="img/image.png" width="300" height="200" alt="퀴즈 게임 실행">
-<img src="img/image.png" width="300" height="200" alt="퀴즈 게임 실행">
-<img src="img/image.png" width="300" height="200" alt="퀴즈 게임 실행">
-<img src="img/image.png" width="300" height="200" alt="퀴즈 게임 실행">
-<img src="img/image.png" width="300" height="200" alt="퀴즈 게임 실행">
-<img src="img/image.png" width="300" height="200" alt="퀴즈 게임 실행">
+<img src="img/menu.png" width="300" height="200" alt="퀴즈 게임 실행">
+<img src="img/1.png" width="300" height="200" alt="퀴즈 게임 실행">
+<img src="img/1-2.png" width="300" height="200" alt="퀴즈 게임 실행">
+<img src="img/2.png" width="300" height="200" alt="퀴즈 게임 실행">
+<img src="img/3-5.png" width="300" height="200" alt="퀴즈 게임 실행">
+<img src="img/4.png" width="300" height="200" alt="퀴즈 게임 실행">
 <img src="img/image.png" width="300" height="200" alt="퀴즈 게임 실행">
 
 ### git log --oneline --graph  결과
 
-<img src="img/image.png" width="300" height="200" alt="git log --oneline --graph">
+<img src="img/git.png" width="300" height="200" alt="git log --oneline --graph">
 
 ### 체크리스트
 
