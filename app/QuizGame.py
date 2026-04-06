@@ -1,4 +1,5 @@
 from Quiz import Quiz
+from random import shuffle
 import json
 import os
 
@@ -62,7 +63,7 @@ class QuizGame:
             if not quizzes:
                 return self._default_quizzes()
 
-            return [Quiz(**quiz) for quiz in quizzes]  # JSON에서 Quiz 객체로 변환
+            return [Quiz(**quiz) for quiz in quizzes]  # JSON -> **quiz 딕셔너리 -> Quiz 객체로 변환
     
         except json.JSONDecodeError:
             print(f"JSON DECODE ERROR: '{self._file_path}' 파일이 손상되어 읽을 수 없습니다. 기본 퀴즈로 복구합니다.")
@@ -150,15 +151,18 @@ class QuizGame:
 
     # 1. 퀴즈 플레이
     def play(self): 
+        
         self.print_line()
         print(f"퀴즈를 시작합니다!(총 {self.get_quiz_len()}문제)")
         self.print_line()
 
         score = 0
+        shuffle(self._quizzes)                           # 퀴즈 순서 섞기 (보너스 과제)
         for quiz in self._quizzes:
             self.print_quiz(quiz)                        # 퀴즈 출력
             score = self.player_score(quiz, score)       # 플레이어 점수 계산
-        self.print_score(self.get_quiz_len(), score)      # 최종 점수 출력
+        self.print_score(self.get_quiz_len(), score)     # 최종 점수 출력
+
 
 
     # ------------ 메뉴 관련 메서드 ------------
@@ -234,6 +238,10 @@ class QuizGame:
             print(f"[{i+1}] {quiz.question}")
         print()
 
+    # 퀴즈 개수 선택
+    def choose_quiz_cnt(self):
+        return self.get_valid_input(1, self.get_quiz_len(), "플레이할 퀴즈 개수를 입력하세요: ")
+    
 
     # ------------ 점수 관련 메서드 ------------
     # 플레이어 점수 계산
