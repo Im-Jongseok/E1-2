@@ -63,7 +63,7 @@ class QuizGame:
             if not quizzes:
                 return self._default_quizzes()
 
-            return [Quiz(**quiz) for quiz in quizzes]  # JSON -> **quiz 딕셔너리 -> Quiz 객체로 변환
+            return [Quiz(**quiz) for quiz in quizzes]  # JSON -> **quiz 딕셔너리 -> Quiz() 객체로 변환
     
         except json.JSONDecodeError:
             print(f"JSON DECODE ERROR: '{self._file_path}' 파일이 손상되어 읽을 수 없습니다. 기본 퀴즈로 복구합니다.")
@@ -151,17 +151,18 @@ class QuizGame:
 
     # 1. 퀴즈 플레이
     def play(self): 
-        
+        quiz_cnt = self.choose_quiz_cnt()                # 플레이할 퀴즈 개수 선택 (보너스 과제)
+
         self.print_line()
-        print(f"퀴즈를 시작합니다!(총 {self.get_quiz_len()}문제)")
+        print(f"퀴즈를 시작합니다!(총 {quiz_cnt}문제)")
         self.print_line()
 
         score = 0
         shuffle(self._quizzes)                           # 퀴즈 순서 섞기 (보너스 과제)
-        for quiz in self._quizzes:
+        for quiz in self._quizzes[:quiz_cnt]:            # 선택한 개수만큼 퀴즈 풀기
             self.print_quiz(quiz)                        # 퀴즈 출력
             score = self.player_score(quiz, score)       # 플레이어 점수 계산
-        self.print_score(self.get_quiz_len(), score)     # 최종 점수 출력
+        self.print_score(self.get_quiz_len(), quiz_cnt, score)     # 최종 점수 출력
 
 
 
@@ -257,16 +258,26 @@ class QuizGame:
         return score
 
     # 최종 점수 출력
-    def print_score(self, quiz_len, score):
+    def print_score(self, quiz_len, quiz_cnt, score):
         self.print_double_line()
 
-        point = int(score / self.get_quiz_len() * 100)     # 개수 환산
-        print(f"결과: {self.get_quiz_len()}문제 중 {score}문제 정답! ({point}점)\n")
+        point = self.calculate_score(quiz_len, quiz_cnt, score)   # 점수 계산
+        print(f"[ 결과 ]\n {self.get_quiz_len()} 문제 중 {quiz_cnt} 문제 풀기!\n\n {score} 문제 정답! ({point} 점)\n")
 
         if self.is_top_score(point):
             print("새로운 최고 점수입니다!\n")
 
         self.print_double_line()
+
+    # 최종 점수 계산
+    def calculate_score(self, max_total, total, score):
+        # 정답 비율
+        ratio = score / total
+
+        # 문제 수 가중치
+        weight = total / max_total
+
+        return int(ratio * weight * 100)
 
     # 최고 점수 갱신
     def is_top_score(self, score):
@@ -282,5 +293,5 @@ class QuizGame:
             print("EMPTY SCORE ERROR: 점수가 없습니다.\n")
             return
         score = int((self._top_score / 100) * self.get_quiz_len())  # 점수 환산
-        print(f"최고 점수: {self._top_score} 점 ({self.get_quiz_len()}문제 중 {score}문제 정답)\n")
+        print(f"최고 점수: {self._top_score} 점 총 ({self.get_quiz_len()} 문제 중 {score} 문제 정답)\n")
 

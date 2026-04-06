@@ -1,24 +1,14 @@
 {
     "quizzes": [
         {
-            "question": "피평가자의 이름은?",
+            "question": "이종석의 mdti는?",
             "choices": [
-                "이종석",
-                "김현석",
-                "김태환",
-                "이태민"
+                "INTJ",
+                "INTP",
+                "ESTP",
+                "ISFP"
             ],
             "answer": 1
-        },
-        {
-            "question": "이종석의 취미는?",
-            "choices": [
-                "음악 감상",
-                "게임",
-                "운동",
-                "독서"
-            ],
-            "answer": 4
         },
         {
             "question": "이종석의 출생 연도는?",
@@ -31,12 +21,22 @@
             "answer": 3
         },
         {
-            "question": "이종석의 mdti는?",
+            "question": "이종석의 취미는?",
             "choices": [
-                "INTJ",
-                "INTP",
-                "ESTP",
-                "ISFP"
+                "음악 감상",
+                "게임",
+                "운동",
+                "독서"
+            ],
+            "answer": 4
+        },
+        {
+            "question": "피평가자의 이름은?",
+            "choices": [
+                "이종석",
+                "김현석",
+                "김태환",
+                "이태민"
             ],
             "answer": 1
         },
@@ -49,6 +49,16 @@
                 "190cm"
             ],
             "answer": 3
+        },
+        {
+            "question": "이종석의 직업은?",
+            "choices": [
+                "백수",
+                "개발자",
+                "주부",
+                "대학생"
+            ],
+            "answer": 4
         }
     ],
     "top_score": 80.0
