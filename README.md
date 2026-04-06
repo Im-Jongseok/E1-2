@@ -20,9 +20,13 @@
 
 ### 퀴즈 주제 및 선정 이유
 
-주제: 인간-이종석
+#### 주제
+* 인간-이종석
 
-선정 이유: 퀴즈를 푼 사람들이 "이종석"이라는 인간을 조금 더 알아가고 친해지는 기회가 되길 희망.
+#### 선정 이유
+* 퀴즈를 푼 사람들이 "이종석"이라는 인간을 조금 더 알아가고 친해지는 기회가 되길 희망.
+
+---
 
 ### 실행 환경
 
@@ -44,6 +48,8 @@
 python main.py
 ```
 
+---
+
 ### 파일 구조
 
 프로젝트 구조 예시:
@@ -55,9 +61,10 @@ E1-2/
 ├─ app/
 │  ├─ main.py       # 프로그램진입점
 │  ├─ Quiz.py       # Quiz 클래스
-│  └─ QuizGame.py   # QuizGame 클래스
-├─ data/
+│  ├─ QuizGame.py   # QuizGame 클래스
+│  ├─ Logger.py     # Logger 클래스
 │  └─ state.json    # 저장된 퀴즈 + 최고 점수 + 기록
+├─ img/             # README 이미지 폴더
 ├─ docker-compose.yml 
 ├─ .gitignore 
 └─ README.md
@@ -75,6 +82,8 @@ E1-2/
 * 퀴즈 풀기/ 추가/ 목록
 * Json 읽고/ 쓰기 (퀴즈 불러오기, 점수 확인/ 저장)
 
+#### Logger class -> 로그 기록에 필요한 기능
+* 로그 기록 저장 메소드
 
 ### 데이터 파일 설명(state.json)
 
@@ -109,40 +118,39 @@ E1-2/
 }
 ```
 
-경로: E1-2/app/state.json
+경로: /E1-2/app/state.json
 
 - `quizzes`: quiz 리스트 (문제, 선택지 4개, 정답 1~4)
 - `top_point`: 이전 최고 점수
 - `history`: 게임 기록
 
-
+---
 
 ### 프로그램 실행 결과 스크린샷
 
-<img src="img/menu.png" width="300" height="200" alt="퀴즈 게임 실행">
-<img src="img/1.png" width="300" height="200" alt="퀴즈 게임 실행">
-<img src="img/1-2.png" width="300" height="200" alt="퀴즈 게임 실행">
-<img src="img/2.png" width="300" height="200" alt="퀴즈 게임 실행">
-<img src="img/3-5.png" width="300" height="200" alt="퀴즈 게임 실행">
-<img src="img/4.png" width="300" height="200" alt="퀴즈 게임 실행">
-<img src="img/image.png" width="300" height="200" alt="퀴즈 게임 실행">
+<img src="img/menu.png" alt="퀴즈 게임 실행">
+<img src="img/1.png"  alt="퀴즈 게임 실행">
+<img src="img/1-2.png" alt="퀴즈 게임 실행">
+<img src="img/2.png"  alt="퀴즈 게임 실행">
+<img src="img/3-5.png"  alt="퀴즈 게임 실행">
+<img src="img/4.png"  alt="퀴즈 게임 실행">
 
 ### git log --oneline --graph  결과
 
-<img src="img/git.png" width="300" height="200" alt="git log --oneline --graph">
+<img src="img/git.png" width="500" height="300" alt="git log --oneline --graph">
 
 ### 체크리스트
 
-- [ ] 메뉴 표시
-- [ ] 퀴즈 풀기/ 추가/ 목록 (기본 퀴즈 5개 이상 포함)
+- [x] 메뉴 표시
+- [x] 퀴즈 풀기/ 추가/ 목록 (기본 퀴즈 5개 이상 포함)
 
-- [ ] 메뉴 입력 검증 (숫자, 범위, 빈 입력 등)
-- [ ] `KeyboardInterrupt`, `EOFError` 처리
-- [ ] 파일 없음/손상 시 기본 데이터 복원
+- [x] 메뉴 입력 검증 (숫자, 범위, 빈 입력 등)
+- [x] `KeyboardInterrupt`, `EOFError` 처리
+- [x] 파일 없음/손상 시 기본 데이터 복원
 
-- [ ] 퀴즈 데이터 json 파일에 저장 및 불러오기
+- [x] 퀴즈 데이터 json 파일에 저장 및 불러오기
 
-- [ ] Git 10회 이상 커밋
-- [ ] 브랜치 작업 (git log --oneline --graph)
-- [ ] 기초 명령어 7종( init ,  add ,  commit ,  push ,  pull ,  checkout ,  clone )을 각각 한 번 이상 사용
-- [ ] clone, pull 실습
+- [x] Git 10회 이상 커밋
+- [x] 브랜치 작업 (git log --oneline --graph)
+- [x] 기초 명령어 7종( init ,  add ,  commit ,  push ,  pull ,  checkout ,  clone )을 각각 한 번 이상 사용
+- [x] clone, pull 실습
