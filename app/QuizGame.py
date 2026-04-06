@@ -212,7 +212,7 @@ class QuizGame:
         print("   나만의 퀴즈 게임\n")
         self.print_double_line()
         if self._top_point != -1:
-            print(f"저장된 데이터를 불러왔습니다. (퀴즈 {self.get_quiz_len()}개), 최고 점수: {self._top_point} 점\n")
+            print(f"저장된 데이터를 불러왔습니다.\n (퀴즈 {self.get_quiz_len()}개), 최고 점수: {self._top_point} 점\n")
             self.print_double_line()
         print("1. 퀴즈 풀기\n")
         print("2. 퀴즈 추가\n")
@@ -379,5 +379,5 @@ class QuizGame:
             print("EMPTY SCORE ERROR: 점수가 없습니다.\n")
             return
         #score = math.ceil((self._top_point / 100) * self.get_quiz_len())  # 점수 환산
-        print(f"최고 점수: {self._top_point} 점\n")
+        print(f"\n최고 점수: {self._top_point} 점\n")
 
