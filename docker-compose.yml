@@ -1,0 +1,13 @@
+services:
+  quiz-app:
+    image: python:3.11
+    container_name: quiz-game
+    working_dir: /app
+    volumes:
+      - app:/app
+    command: python main.py
+    stdin_open: true
+    tty: true
+
+volumes:
+  app:
