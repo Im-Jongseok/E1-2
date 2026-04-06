@@ -24,7 +24,7 @@
 
 선정 이유: 퀴즈를 푼 사람들이 "이종석"이라는 인간을 조금 더 알아가고 친해지는 기회가 되길 희망.
 
-## 실행 환경
+### 실행 환경
 
 | 항목 | 내용 |
 | --- | --- |
@@ -36,7 +36,7 @@
 | Docker | 28.5.2 |
 | 실행 커맨드 | `python main.py` |
 
-## 실행 방법
+### 실행 방법
 
 1. 리포지터리 루트로 이동
 2. Python 실행
@@ -45,7 +45,7 @@
 python main.py
 ```
 
-## 파일 구조
+### 파일 구조
 
 프로젝트 구조 예시:
 
@@ -64,20 +64,20 @@ E1-2/
 └─ README.md
 ```
 
-## 클래스 구조
+### 클래스 구조
 
-### Quiz class -> 퀴즈 구성 내용
-    * 퀴즈 문제
-    * 퀴즈 선택지
-    * 퀴즈 정답 및 확인 
+#### Quiz class -> 퀴즈 구성 내용
+* 퀴즈 문제
+* 퀴즈 선택지
+* 퀴즈 정답 및 확인 
 
-### QuizGame class -> 게임 작동 필요한 기능
-    * 메뉴 출력 및 선택 기능
-    * 퀴즈 풀기/ 추가/ 목록
-    * Json 읽고/ 쓰기 (퀴즈 불러오기, 점수 확인/ 저장)
+#### QuizGame class -> 게임 작동 필요한 기능
+* 메뉴 출력 및 선택 기능
+* 퀴즈 풀기/ 추가/ 목록
+* Json 읽고/ 쓰기 (퀴즈 불러오기, 점수 확인/ 저장)
 
 
-## 데이터 파일 설명(state.json)
+### 데이터 파일 설명(state.json)
 
 저장 경로: 프로젝트 루트 `state.json`
 
@@ -103,7 +103,7 @@ E1-2/
 
 
 
-## 프로그램 실행 결과 스크린샷
+### 프로그램 실행 결과 스크린샷
 
 <img src="img/image.png" width="300" height="200" alt="퀴즈 게임 실행">
 <img src="img/image.png" width="300" height="200" alt="퀴즈 게임 실행">
@@ -113,21 +113,21 @@ E1-2/
 <img src="img/image.png" width="300" height="200" alt="퀴즈 게임 실행">
 <img src="img/image.png" width="300" height="200" alt="퀴즈 게임 실행">
 
-## git log --oneline --graph  결과
+### git log --oneline --graph  결과
 
 <img src="img/image.png" width="300" height="200" alt="git log --oneline --graph">
 
-## 체크리스트
+### 체크리스트
 
 - [ ] 메뉴 표시
 - [ ] 퀴즈 풀기/ 추가/ 목록 (기본 퀴즈 5개 이상 포함)
----
+
 - [ ] 메뉴 입력 검증 (숫자, 범위, 빈 입력 등)
 - [ ] `KeyboardInterrupt`, `EOFError` 처리
 - [ ] 파일 없음/손상 시 기본 데이터 복원
----
+
 - [ ] 퀴즈 데이터 json 파일에 저장 및 불러오기
----
+
 - [ ] Git 10회 이상 커밋
 - [ ] 브랜치 작업 (git log --oneline --graph)
 - [ ] 기초 명령어 7종( init ,  add ,  commit ,  push ,  pull ,  checkout ,  clone )을 각각 한 번 이상 사용
