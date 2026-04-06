@@ -52,17 +52,29 @@ python main.py
 필요 시 다음과 같이 패키지 구조도 확장 가능합니다:
 
 ```
-E1-2/├
+E1-2/
 ├─ app/
-│  ├─ __init__.py
 │  ├─ main.py       # 프로그램진입점
-│  ├─ quiz.py       # Quiz, QuizGame 클래스
-│  └─ game.py
+│  ├─ Quiz.py       # Quiz 클래스
+│  └─ QuizGame.py   # QuizGame 클래스
 ├─ data/
 │  └─ state.json    # 저장된 퀴즈 + 최고 점수
 ├─ docker-compose.yml 
+├─ .gitignore 
 └─ README.md
 ```
+
+## 클래스 구조
+
+### Quiz class -> 퀴즈 구성 내용
+    * 퀴즈 문제
+    * 퀴즈 선택지
+    * 퀴즈 정답 및 확인 
+
+### QuizGame class -> 게임 작동 필요한 기능
+    * 메뉴 출력 및 선택 기능
+    * 퀴즈 풀기/ 추가/ 목록
+    * Json 읽고/ 쓰기 (퀴즈 불러오기, 점수 확인/ 저장)
 
 
 ## 데이터 파일 설명(state.json)
@@ -84,6 +96,8 @@ E1-2/├
 }
 ```
 
+경로: E1-2/app/state.json
+
 - `quizzes`: quiz 리스트 (문제, 선택지 4개, 정답 1~4)
 - `best_score`: 이전 최고 점수
 
@@ -91,17 +105,30 @@ E1-2/├
 
 ## 프로그램 실행 결과 스크린샷
 
+<img src="img/image.png" width="300" height="200" alt="퀴즈 게임 실행">
+<img src="img/image.png" width="300" height="200" alt="퀴즈 게임 실행">
+<img src="img/image.png" width="300" height="200" alt="퀴즈 게임 실행">
+<img src="img/image.png" width="300" height="200" alt="퀴즈 게임 실행">
+<img src="img/image.png" width="300" height="200" alt="퀴즈 게임 실행">
+<img src="img/image.png" width="300" height="200" alt="퀴즈 게임 실행">
+<img src="img/image.png" width="300" height="200" alt="퀴즈 게임 실행">
 
 ## git log --oneline --graph  결과
 
-
+<img src="img/image.png" width="300" height="200" alt="git log --oneline --graph">
 
 ## 체크리스트
 
-- [ ] 기본 퀴즈 5개 이상 포함
+- [ ] 메뉴 표시
+- [ ] 퀴즈 풀기/ 추가/ 목록 (기본 퀴즈 5개 이상 포함)
+---
 - [ ] 메뉴 입력 검증 (숫자, 범위, 빈 입력 등)
-- [ ] 파일 없음/손상 시 기본 데이터 복원
 - [ ] `KeyboardInterrupt`, `EOFError` 처리
-- [ ] Git 커밋 & 브랜치 활용 (10회 이상 커밋, 브랜치 작업 포함)
-- [ ] 기초 명령어 7종( init ,  add ,  commit ,  push ,  pull ,  checkout ,  clone )을
-각각 한 번 이상 사용
+- [ ] 파일 없음/손상 시 기본 데이터 복원
+---
+- [ ] 퀴즈 데이터 json 파일에 저장 및 불러오기
+---
+- [ ] Git 10회 이상 커밋
+- [ ] 브랜치 작업 (git log --oneline --graph)
+- [ ] 기초 명령어 7종( init ,  add ,  commit ,  push ,  pull ,  checkout ,  clone )을 각각 한 번 이상 사용
+- [ ] clone, pull 실습
